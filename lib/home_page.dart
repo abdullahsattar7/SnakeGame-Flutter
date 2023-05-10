@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:math';
-import 'dart:isolate';
 import 'package:flutter/material.dart';
 import 'package:snake_game/blank_pixels.dart';
 import 'package:snake_game/food_pixel.dart';
@@ -40,7 +39,7 @@ class _HomePageState extends State<HomePage> {
   void startGame() {
     gameHasStarted = true;
 
-    Timer.periodic(const Duration(milliseconds: 300), (timer) {
+    Timer.periodic(const Duration(milliseconds: 400), (timer) {
       setState(() {
         // keep the snake moving
         moveSnake();
@@ -257,7 +256,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         itemBuilder: (context, index) {
                           if (snakePos.contains(index)) {
-                            return const SnakePixel();
+                            return SnakePixel();
                           } else if (foodPos == index) {
                             return FoodPixel();
                           } else {
