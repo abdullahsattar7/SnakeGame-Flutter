@@ -17,7 +17,7 @@ class SplashScreen extends StatelessWidget {
             builder: (context, constraints) {
               return Image.asset(
                 'assets/splashscreen.png',
-                fit: BoxFit.fitHeight,
+                fit: BoxFit.fill,
                 height: constraints.maxHeight,
                 width: constraints.maxWidth,
                 alignment: Alignment.center,
