@@ -23,17 +23,6 @@ class SplashScreen extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Padding(
-                padding: EdgeInsets.only(top: 50),
-                child: Text(
-                  'Ssssnnaakkee',
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 18, 85, 22),
-                    fontSize: 32.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
               Expanded(
                 child: Container(),
               ),
@@ -46,7 +35,53 @@ class SplashScreen extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => const HomePage()),
                     );
                   },
-                  child: const Text('Play'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.transparent,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(30)),
+                    ),
+                  ),
+                  child: Ink(
+                    decoration: BoxDecoration(
+                      gradient: const LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [Colors.blue, Colors.green],
+                      ),
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 30, vertical: 10),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Text(
+                            'Play',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          Container(
+                            height: 20,
+                            width: 20,
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.white,
+                            ),
+                            child: const Icon(
+                              Icons.arrow_forward_ios,
+                              color: Colors.blue,
+                              size: 12,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ],
