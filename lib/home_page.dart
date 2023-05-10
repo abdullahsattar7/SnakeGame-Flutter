@@ -30,6 +30,12 @@ class _HomePageState extends State<HomePage> {
   int currentScore = 0;
   double cellSize = 100.0;
 
+  void initState() {
+    super.initState();
+    // Call your function here
+    startGame();
+  }
+
   //start the game
   void startGame() {
     gameHasStarted = true;
@@ -193,17 +199,20 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   //user current score
-                  Column(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text('𝘾𝙪𝙧𝙧𝙚𝙣𝙩 𝙎𝙘𝙤𝙧𝙚',
+                      const Text('Current Score: ',
                           style: TextStyle(color: Colors.black, fontSize: 30)),
-                      Text(
-                        currentScore.toString(),
-                        style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 36,
-                            fontWeight: FontWeight.bold),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 8.0),
+                        child: Text(
+                          currentScore.toString(),
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 30,
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -263,31 +272,31 @@ class _HomePageState extends State<HomePage> {
             ),
 
             // play Button
-            Expanded(
-              child: Container(
-                child: Center(
-                  child: MaterialButton(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    color: gameHasStarted
-                        ? Colors.grey
-                        : Color.fromARGB(255, 0, 0, 0),
-                    onPressed: gameHasStarted ? () {} : startGame,
-                    child: const Text(
-                      '𝙋𝙡𝙖𝙮',
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 255, 255,
-                            255), // Change this color to your desired color
-                        fontSize: 20, // Change this to your desired font size
-                        fontWeight: FontWeight
-                            .bold, // Change this to your desired font weight
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            // Expanded(
+            //   child: Container(
+            //     child: Center(
+            //       child: MaterialButton(
+            //         shape: RoundedRectangleBorder(
+            //           borderRadius: BorderRadius.circular(10),
+            //         ),
+            //         color: gameHasStarted
+            //             ? Colors.grey
+            //             : Color.fromARGB(255, 0, 0, 0),
+            //         onPressed: gameHasStarted ? () {} : startGame,
+            //         child: const Text(
+            //           '𝙋𝙡𝙖𝙮',
+            //           style: TextStyle(
+            //             color: Color.fromARGB(255, 255, 255,
+            //                 255), // Change this color to your desired color
+            //             fontSize: 20, // Change this to your desired font size
+            //             fontWeight: FontWeight
+            //                 .bold, // Change this to your desired font weight
+            //           ),
+            //         ),
+            //       ),
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),

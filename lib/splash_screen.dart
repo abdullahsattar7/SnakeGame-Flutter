@@ -3,43 +3,55 @@ import 'package:lottie/lottie.dart';
 
 import 'dart:async';
 
-
 import 'package:snake_game/home_page.dart';
 
-
-
-class SplashScreen extends StatefulWidget {
+class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
-}
-
-class _SplashScreenState extends State<SplashScreen> with  SingleTickerProviderStateMixin{
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    Timer(const Duration(seconds: 4), () {
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>const HomePage()));
-    });
-  }
-  @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        gradient:  LinearGradient(
-          begin: Alignment.topRight,
-          end: Alignment.bottomLeft,
-            colors: [Colors.purple,Colors.orange]
-        ),
-      ),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Center(
-          child: Lottie.asset('assets/21534-wallet-icon.json',
+    return Scaffold(
+      body: Stack(
+        children: [
+          Image.asset(
+            'assets/splashscreen.png',
+            fit: BoxFit.cover,
+            height: double.infinity,
+            width: double.infinity,
+            alignment: Alignment.center,
           ),
-        ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Padding(
+                padding: EdgeInsets.only(top: 50),
+                child: Text(
+                  'Ssssnnaakkee',
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 18, 85, 22),
+                    fontSize: 32.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Container(),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 50),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const HomePage()),
+                    );
+                  },
+                  child: const Text('Play'),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
