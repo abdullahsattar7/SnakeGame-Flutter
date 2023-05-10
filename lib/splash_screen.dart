@@ -13,12 +13,16 @@ class SplashScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Image.asset(
-            'assets/splashscreen.png',
-            fit: BoxFit.cover,
-            height: double.infinity,
-            width: double.infinity,
-            alignment: Alignment.center,
+          LayoutBuilder(
+            builder: (context, constraints) {
+              return Image.asset(
+                'assets/splashscreen.png',
+                fit: BoxFit.fitHeight,
+                height: constraints.maxHeight,
+                width: constraints.maxWidth,
+                alignment: Alignment.center,
+              );
+            },
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
