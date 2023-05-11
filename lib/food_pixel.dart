@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 class FoodPixel extends StatefulWidget {
   @override
@@ -10,6 +11,15 @@ class _AnimatedFoodState extends State<FoodPixel>
   late AnimationController _animationController;
   late Animation<double> _animation;
 
+  List<String> _foodImages = [
+    'assets/apple.png',
+    'assets/stawberry.png',
+    'assets/pineapple.png',
+    'assets/banana.png',
+    'assets/grape.png'
+  ];
+  String _currentFoodImage = '';
+
   @override
   void initState() {
     super.initState();
@@ -18,6 +28,15 @@ class _AnimatedFoodState extends State<FoodPixel>
     _animation =
         Tween<double>(begin: 1.0, end: 1.2).animate(_animationController);
     _animationController.repeat(reverse: true);
+    _setRandomFoodImage();
+  }
+
+  void _setRandomFoodImage() {
+    final Random random = Random();
+    final int randomIndex = random.nextInt(_foodImages.length);
+    setState(() {
+      _currentFoodImage = _foodImages[randomIndex];
+    });
   }
 
   @override
@@ -33,7 +52,7 @@ class _AnimatedFoodState extends State<FoodPixel>
       child: ScaleTransition(
         scale: _animation,
         child: Image.asset(
-          'assets/food.png',
+          _currentFoodImage,
           width: 24,
           height: 24,
         ),
