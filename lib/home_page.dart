@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
 
   void initState() {
     super.initState();
-    // Call your function here
+    // Call your main function here
     startGame();
   }
 
@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
   void startGame() {
     gameHasStarted = true;
 
-    Timer.periodic(const Duration(milliseconds: 400), (timer) {
+    Timer.periodic(const Duration(milliseconds: 350), (timer) {
       setState(() {
         // keep the snake moving
         moveSnake();
