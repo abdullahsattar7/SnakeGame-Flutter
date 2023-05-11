@@ -28,11 +28,15 @@ The game features a sleek, snake-themed design, with the snake and food graphics
 
 ✅ Food randomly appears with animation and images
 
+❌ Sound for different events
+
 ❌ Snake update with image
 
 ❌ Highscore in firebase
 
 ❌ Arrow Key Support for Desktop
+
+❌ Introducing Different Difficulty Levels (Easy, Medium, Hard) snake speed increases
 
 
 
@@ -85,7 +89,7 @@ in Home_page.dart, startgame() function
 ```bash
 Timer.periodic(const Duration(milliseconds: 350), (timer)
 ```
-increase or decrease the timer according to your needs
+increase or decrease the timer according to your needs, by decreasing this timer snake speed increase and vice versa
 
 #### How to change color of snake pixel
 
