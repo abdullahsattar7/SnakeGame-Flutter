@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:snake_game/blank_pixels.dart';
 import 'package:snake_game/food_pixel.dart';
 import 'package:snake_game/snake_pixel.dart';
@@ -54,27 +55,45 @@ class _HomePageState extends State<HomePage> {
               barrierDismissible: false,
               builder: (context) {
                 return AlertDialog(
-                  title: const Text('𝙂𝙖𝙢𝙚 𝙊𝙫𝙚𝙧'),
-                  backgroundColor: Colors.lightBlueAccent,
-                  content: Text.rich(
-                    TextSpan(
-                      text: '𝙔𝙤𝙪𝙧 𝙎𝙘𝙤𝙧𝙚 𝙞𝙨: ',
-                      style: const TextStyle(fontSize: 30),
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: '$currentScore',
-                          style: const TextStyle(
-                            color: Colors.redAccent,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
+                  backgroundColor: Colors.green[200],
+                  title: const Text(
+                    "Game Over",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                  actions: [
-                    MaterialButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
+                  content: Text(
+                    "Your Current Score is : $currentScore",
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                    side: const BorderSide(
+                      width: 3,
+                      color: Colors.black,
+                    ),
+                  ),
+                  actions: <Widget>[
+                    TextButton(
+                      child: const Text(
+                        'Exit',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      onPressed: () {
+                        SystemNavigator.pop();
+                      },
+                    ),
+                    TextButton(
+                      child: const Text(
+                        'Restart Game',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       onPressed: () {
                         Navigator.pop(context);
@@ -82,11 +101,6 @@ class _HomePageState extends State<HomePage> {
                         newGame();
                         startGame();
                       },
-                      color: Colors.black,
-                      child: const Text(
-                        '𝙍𝙚𝙨𝙩𝙖𝙧𝙩',
-                        style: TextStyle(color: Colors.white),
-                      ),
                     ),
                   ],
                 );
