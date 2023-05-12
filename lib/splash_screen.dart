@@ -1,12 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
+import 'package:assets_audio_player/assets_audio_player.dart';
 
 import 'dart:async';
 
 import 'package:snake_game/home_page.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
+
+  @override
+  _SplashScreenState createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  final assetsAudioPlayer = AssetsAudioPlayer();
+
+  @override
+  void initState() {
+    super.initState();
+
+    assetsAudioPlayer.open(Playlist(audios: [Audio("assets/sound/intro.mp3")]),
+        loopMode: LoopMode.playlist //loop the full playlist
+        );
+    assetsAudioPlayer.play();
+  }
+
+  @override
+  void dispose() {
+    assetsAudioPlayer.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +57,7 @@ class SplashScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 50),
                 child: ElevatedButton(
                   onPressed: () {
+                    assetsAudioPlayer.stop();
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => const HomePage()),
