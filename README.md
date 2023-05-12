@@ -7,7 +7,6 @@
   </h1>
 </a>
 
-
 # Snake Game
 
 The snake game is a classic arcade-style game where the player controls a snake that moves around the screen, eating food and growing in length. The player must avoid running into walls or the snake's own tail, as this will end the game.
@@ -20,9 +19,9 @@ The game features a sleek, snake-themed design, with the snake and food graphics
 
 # Features & Upcoming Features
 
-✅ Snake Direction Using Gesture Detection 
+✅ Snake Direction Using Gesture Detection
 
-✅ Splash Screen 
+✅ Splash Screen
 
 ✅ Optimised For Mobile And Desktop
 
@@ -37,11 +36,6 @@ The game features a sleek, snake-themed design, with the snake and food graphics
 ❌ Arrow Key Support for Desktop
 
 ❌ Introducing Different Difficulty Levels (Easy, Medium, Hard) snake speed increases
-
-
-
-
-
 
 ## Installation
 
@@ -63,8 +57,8 @@ Run
   flutter run
 ```
 
-    
 ## Screenshots
+
 <div style="display:flex; flex-direction:row;">
   <div class="flex-item" style="text-align: center;">
     <h3>Splash Screen</h3>
@@ -80,20 +74,21 @@ Run
   </div>
 </div>
 
-
 ## FAQ
 
 #### How to change snake speed direction
 
-in Home_page.dart, startgame() function 
+in Home_page.dart, startgame() function
+
 ```bash
 Timer.periodic(const Duration(milliseconds: 350), (timer)
 ```
+
 increase or decrease the timer according to your needs, by decreasing this timer snake speed increase and vice versa
 
 #### How to change color of snake pixel
 
-in Snake_pixel.dart, 
+in Snake_pixel.dart,
 
 ```bash
 BoxDecoration(
@@ -101,6 +96,7 @@ BoxDecoration(
         color: Color.fromARGB(255, 116, 240, 121),
       ),
 ```
+
 you can change the color of snake according to your needs
 
 #### How to change images of food
@@ -109,22 +105,19 @@ in food_pixel.dart,
 
 ```bash
 List<String> _foodImages = [
-    'assets/apple.png',
-    'assets/stawberry.png',
-    'assets/pineapple.png',
-    'assets/banana.png',
-    'assets/grape.png'
+    'assets/food/apple.png',
+    'assets/food/strawberry.png',
+    'assets/food/pineapple.png',
+    'assets/food/banana.png',
+    'assets/food/grape.png'
   ];
 ```
+
 Here you can add or remove images according to your needs
-
-
-
 
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
-
 
 ## Contributing
 
@@ -132,12 +125,7 @@ Contributions are always welcome!
 
 Fork This Project & let us know where we can work together
 
-
-
-
 ## Authors
 
 - [KHILJI](https://www.github.com/Smalick0478)
 - [ABDULLAH SATTAR](https://www.github.com/abdullahsattar7)
-
-

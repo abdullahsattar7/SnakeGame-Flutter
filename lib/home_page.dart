@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:assets_audio_player/assets_audio_player.dart';
+
 import 'package:snake_game/blank_pixels.dart';
 import 'package:snake_game/food_pixel.dart';
 import 'package:snake_game/snake_pixel.dart';
@@ -29,6 +31,8 @@ class _HomePageState extends State<HomePage> {
   //user score
   int currentScore = 0;
   double cellSize = 100.0;
+  //Audio Play
+  final assetsAudioPlayer = AssetsAudioPlayer();
 
   void initState() {
     super.initState();
@@ -127,6 +131,7 @@ class _HomePageState extends State<HomePage> {
   void eatFood() {
     // making sure the new food is not where the snake is
     while (snakePos.contains(foodPos)) {
+      AssetsAudioPlayer.playAndForget(Audio("assets/sound/eat.mp3"));
       foodPos = Random().nextInt(totalSquares);
     }
   }
@@ -181,6 +186,7 @@ class _HomePageState extends State<HomePage> {
     }
     if (snakePos.last == foodPos) {
       eatFood();
+
       currentScore++;
     } else {
       snakePos.removeAt(0);
@@ -194,6 +200,7 @@ class _HomePageState extends State<HomePage> {
     // THIS LIST IS THE BODY OF THE SNAKE
     List<int> bodySnake = snakePos.sublist(0, snakePos.length - 1);
     if (bodySnake.contains(snakePos.last)) {
+      AssetsAudioPlayer.playAndForget(Audio("assets/sound/game_over.mp3"));
       return true;
     }
     return false;
