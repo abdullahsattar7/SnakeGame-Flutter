@@ -17,7 +17,8 @@ class HomePage extends StatefulWidget {
 
 enum SnakeDirection { UP, DOWN, LEFT, RIGHT }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
   // grid dimensions
   int rowSize = 10;
   int totalSquares = 100;
@@ -33,11 +34,25 @@ class _HomePageState extends State<HomePage> {
   double cellSize = 100.0;
   //Audio Play
   final assetsAudioPlayer = AssetsAudioPlayer();
+  //Game Over animation
+  late AnimationController _animationController;
+  late Animation<double> _animation;
 
   void initState() {
     super.initState();
     // Call your main function here
     startGame();
+    _animationController =
+        AnimationController(duration: const Duration(seconds: 1), vsync: this);
+    _animation =
+        Tween<double>(begin: 1.0, end: 1.2).animate(_animationController);
+    _animationController.repeat(reverse: true);
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
   }
 
   //start the game
@@ -58,55 +73,58 @@ class _HomePageState extends State<HomePage> {
               context: context,
               barrierDismissible: false,
               builder: (context) {
-                return AlertDialog(
-                  backgroundColor: Colors.green[200],
-                  title: const Text(
-                    "Game Over",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  content: Text(
-                    "Your Current Score is : $currentScore",
-                    style: const TextStyle(color: Colors.white),
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                    side: const BorderSide(
-                      width: 3,
-                      color: Colors.black,
-                    ),
-                  ),
-                  actions: <Widget>[
-                    TextButton(
-                      child: const Text(
-                        'Exit',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
+                return ScaleTransition(
+                  scale: _animation,
+                  child: AlertDialog(
+                    backgroundColor: Colors.green[200],
+                    title: const Text(
+                      "Game Over",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
                       ),
-                      onPressed: () {
-                        SystemNavigator.pop();
-                      },
                     ),
-                    TextButton(
-                      child: const Text(
-                        'Restart Game',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    content: Text(
+                      "Your Current Score is : $currentScore",
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                      side: const BorderSide(
+                        width: 3,
+                        color: Colors.black,
                       ),
-                      onPressed: () {
-                        Navigator.pop(context);
-                        submitScore();
-                        newGame();
-                        startGame();
-                      },
                     ),
-                  ],
+                    actions: <Widget>[
+                      TextButton(
+                        child: const Text(
+                          'Exit',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        onPressed: () {
+                          SystemNavigator.pop();
+                        },
+                      ),
+                      TextButton(
+                        child: const Text(
+                          'Restart Game',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                          submitScore();
+                          newGame();
+                          startGame();
+                        },
+                      ),
+                    ],
+                  ),
                 );
               });
         }
