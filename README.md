@@ -115,6 +115,13 @@ List<String> _foodImages = [
 
 Here you can add or remove images according to your needs
 
+Donot forget to add - assets in pubspec.yaml
+
+```bash
+assets:
+    - assets/
+```
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
