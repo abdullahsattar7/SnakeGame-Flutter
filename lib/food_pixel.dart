@@ -11,12 +11,12 @@ class _AnimatedFoodState extends State<FoodPixel>
   late AnimationController _animationController;
   late Animation<double> _animation;
 
-  List<String> _foodImages = [
-    'assets/apple.png',
-    'assets/stawberry.png',
-    'assets/pineapple.png',
-    'assets/banana.png',
-    'assets/grape.png'
+  final List<String> _foodImages = [
+    'assets/food/apple.png',
+    'assets/food/strawberry.png',
+    'assets/food/pineapple.png',
+    'assets/food/banana.png',
+    'assets/food/grape.png'
   ];
   String _currentFoodImage = '';
 
