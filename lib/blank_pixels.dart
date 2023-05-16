@@ -6,10 +6,10 @@ class BlankPixel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(2.0),
+      padding: const EdgeInsets.all(1.0),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.grey[800],
+          color: Colors.white,
           borderRadius: BorderRadius.circular(4),
         ),
       ),
